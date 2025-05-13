@@ -1,4 +1,3 @@
-# `tiny-expr`
+# 🔋 D-Cell
 
-`tiny-expr` is a micro expression parser and evaluator that makes it easy to
-embed complex expressions in your Go applications.
+D-Cell is the batteries-included Dynamic Condition Evaluation Language for Go.
