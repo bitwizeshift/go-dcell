@@ -5,6 +5,8 @@ on error-conditions in the go-dcell package.
 */
 package levenshtein
 
+import "iter"
+
 // DamerauDistance calculates the Damerau-Levenshtein distance between two
 // strings. The Damerau-Levenshtein distance is a measure of the similarity
 // between two strings, defined as the minimum number of operations required to
@@ -55,4 +57,40 @@ func DamerauDistance(from, to string) int {
 	}
 
 	return distance[fromLen][toLen]
+}
+
+// Suggestions generates a list of suggestions for a given input string based
+// on the Damerau-Levenshtein distance. It returns a slice of strings that are
+// within the optimal distance from the input string. The optimal distance is
+// determined based on the length of the input string.
+func Suggestions(input string, candidates iter.Seq[string]) []string {
+	var suggestions []string
+	lowest := optimalDistance(input)
+	for candidate := range candidates {
+		distance := DamerauDistance(input, candidate)
+		if lowest < distance {
+			continue
+		}
+
+		if distance < lowest {
+			suggestions = []string{candidate}
+			lowest = distance
+		} else if distance == lowest {
+			suggestions = append(suggestions, candidate)
+		}
+	}
+	return suggestions
+}
+
+func optimalDistance(s string) int {
+	l := len(s)
+	switch {
+	case l <= 4:
+		return 1
+	case l <= 8:
+		return 2
+	case l <= 12:
+		return 3
+	}
+	return (l / 4) + 1
 }
