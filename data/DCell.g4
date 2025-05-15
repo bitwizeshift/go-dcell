@@ -23,6 +23,7 @@ expression
   | expression ('+' | '-') expression                   # additiveExpression
   | expression ('&&' | 'and') expression                # logicalAndExpression
   | expression ('||' | 'or') expression                 # logicalOrExpression
+  | expression ('<->' | 'implies') expression           # implicationExpression
   | expression ('<<' | '>>') expression                 # shiftExpression
   | expression '&' expression                           # bitwiseAndExpression
   | expression ('^' | '|') expression                   # bitwiseOrExpression

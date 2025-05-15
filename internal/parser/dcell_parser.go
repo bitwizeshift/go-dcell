@@ -35,18 +35,18 @@ func dcellParserInit() {
 	staticData.LiteralNames = []string{
 		"", "'.'", "'['", "']'", "'is'", "'not'", "'in'", "'('", "')'", "'!'",
 		"'~'", "'+'", "'-'", "'**'", "'*'", "'/'", "'//'", "'%'", "'&&'", "'and'",
-		"'||'", "'or'", "'<<'", "'>>'", "'&'", "'^'", "'|'", "'<='", "'<'",
-		"'>'", "'>='", "'=='", "'!='", "'?'", "':'", "'?:'", "'??'", "'as'",
-		"','", "'true'", "'false'", "'null'", "'int'", "'float'", "'string'",
-		"'bool'",
+		"'||'", "'or'", "'<->'", "'implies'", "'<<'", "'>>'", "'&'", "'^'",
+		"'|'", "'<='", "'<'", "'>'", "'>='", "'=='", "'!='", "'?'", "':'", "'?:'",
+		"'??'", "'as'", "','", "'true'", "'false'", "'null'", "'int'", "'float'",
+		"'string'", "'bool'",
 	}
 	staticData.SymbolicNames = []string{
 		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
 		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-		"", "", "", "", "", "", "", "", "", "", "", "", "IDENTIFIER", "DECIMAL_INTEGER",
-		"HEX_INTEGER", "OCTAL_INTEGER", "BINARY_INTEGER", "DECIMAL_FLOAT", "SCIENTIFIC_FLOAT",
-		"SINGLE_QUOTE_STRING", "DOUBLE_QUOTE_STRING", "TRIPLE_QUOTE_STRING",
-		"WS", "COMMENT",
+		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "IDENTIFIER",
+		"DECIMAL_INTEGER", "HEX_INTEGER", "OCTAL_INTEGER", "BINARY_INTEGER",
+		"DECIMAL_FLOAT", "SCIENTIFIC_FLOAT", "SINGLE_QUOTE_STRING", "DOUBLE_QUOTE_STRING",
+		"TRIPLE_QUOTE_STRING", "WS", "COMMENT",
 	}
 	staticData.RuleNames = []string{
 		"program", "expression", "term", "invocation", "parameterList", "identifier",
@@ -54,7 +54,7 @@ func dcellParserInit() {
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 57, 189, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 59, 192, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
 		10, 2, 11, 7, 11, 2, 12, 7, 12, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1,
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 42, 8, 1, 1, 1,
@@ -63,85 +63,86 @@ func dcellParserInit() {
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-		1, 3, 1, 105, 8, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 111, 8, 1, 10, 1, 12,
-		1, 114, 9, 1, 1, 2, 1, 2, 3, 2, 118, 8, 2, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3,
-		3, 3, 125, 8, 3, 1, 3, 1, 3, 3, 3, 129, 8, 3, 1, 4, 1, 4, 1, 4, 5, 4, 134,
-		8, 4, 10, 4, 12, 4, 137, 9, 4, 1, 5, 1, 5, 1, 6, 3, 6, 142, 8, 6, 1, 6,
-		1, 6, 3, 6, 146, 8, 6, 1, 6, 3, 6, 149, 8, 6, 1, 7, 1, 7, 1, 7, 1, 7, 1,
-		7, 1, 7, 3, 7, 157, 8, 7, 1, 8, 1, 8, 1, 9, 1, 9, 1, 9, 1, 9, 5, 9, 165,
-		8, 9, 10, 9, 12, 9, 168, 9, 9, 3, 9, 170, 8, 9, 1, 9, 1, 9, 1, 10, 1, 10,
-		1, 10, 3, 10, 177, 8, 10, 1, 11, 1, 11, 1, 11, 1, 11, 3, 11, 183, 8, 11,
-		1, 12, 1, 12, 3, 12, 187, 8, 12, 1, 12, 0, 1, 2, 13, 0, 2, 4, 6, 8, 10,
-		12, 14, 16, 18, 20, 22, 24, 0, 11, 2, 0, 5, 5, 9, 9, 1, 0, 11, 12, 1, 0,
-		14, 17, 1, 0, 18, 19, 1, 0, 20, 21, 1, 0, 22, 23, 1, 0, 25, 26, 1, 0, 27,
-		30, 1, 0, 31, 32, 1, 0, 39, 40, 1, 0, 42, 45, 220, 0, 26, 1, 0, 0, 0, 2,
-		41, 1, 0, 0, 0, 4, 117, 1, 0, 0, 0, 6, 128, 1, 0, 0, 0, 8, 130, 1, 0, 0,
-		0, 10, 138, 1, 0, 0, 0, 12, 148, 1, 0, 0, 0, 14, 156, 1, 0, 0, 0, 16, 158,
-		1, 0, 0, 0, 18, 160, 1, 0, 0, 0, 20, 176, 1, 0, 0, 0, 22, 182, 1, 0, 0,
-		0, 24, 186, 1, 0, 0, 0, 26, 27, 3, 2, 1, 0, 27, 28, 5, 0, 0, 1, 28, 1,
-		1, 0, 0, 0, 29, 30, 6, 1, -1, 0, 30, 42, 3, 4, 2, 0, 31, 32, 5, 7, 0, 0,
-		32, 33, 3, 2, 1, 0, 33, 34, 5, 8, 0, 0, 34, 42, 1, 0, 0, 0, 35, 36, 7,
-		0, 0, 0, 36, 42, 3, 2, 1, 17, 37, 38, 5, 10, 0, 0, 38, 42, 3, 2, 1, 16,
-		39, 40, 7, 1, 0, 0, 40, 42, 3, 2, 1, 15, 41, 29, 1, 0, 0, 0, 41, 31, 1,
-		0, 0, 0, 41, 35, 1, 0, 0, 0, 41, 37, 1, 0, 0, 0, 41, 39, 1, 0, 0, 0, 42,
-		112, 1, 0, 0, 0, 43, 47, 10, 19, 0, 0, 44, 48, 5, 6, 0, 0, 45, 46, 5, 5,
-		0, 0, 46, 48, 5, 6, 0, 0, 47, 44, 1, 0, 0, 0, 47, 45, 1, 0, 0, 0, 48, 49,
-		1, 0, 0, 0, 49, 111, 3, 2, 1, 20, 50, 51, 10, 14, 0, 0, 51, 52, 5, 13,
-		0, 0, 52, 111, 3, 2, 1, 15, 53, 54, 10, 13, 0, 0, 54, 55, 7, 2, 0, 0, 55,
-		111, 3, 2, 1, 14, 56, 57, 10, 12, 0, 0, 57, 58, 7, 1, 0, 0, 58, 111, 3,
-		2, 1, 13, 59, 60, 10, 11, 0, 0, 60, 61, 7, 3, 0, 0, 61, 111, 3, 2, 1, 12,
-		62, 63, 10, 10, 0, 0, 63, 64, 7, 4, 0, 0, 64, 111, 3, 2, 1, 11, 65, 66,
-		10, 9, 0, 0, 66, 67, 7, 5, 0, 0, 67, 111, 3, 2, 1, 10, 68, 69, 10, 8, 0,
-		0, 69, 70, 5, 24, 0, 0, 70, 111, 3, 2, 1, 9, 71, 72, 10, 7, 0, 0, 72, 73,
-		7, 6, 0, 0, 73, 111, 3, 2, 1, 8, 74, 75, 10, 6, 0, 0, 75, 76, 7, 7, 0,
-		0, 76, 111, 3, 2, 1, 7, 77, 78, 10, 5, 0, 0, 78, 79, 7, 8, 0, 0, 79, 111,
-		3, 2, 1, 6, 80, 81, 10, 4, 0, 0, 81, 82, 5, 33, 0, 0, 82, 83, 3, 2, 1,
-		0, 83, 84, 5, 34, 0, 0, 84, 85, 3, 2, 1, 5, 85, 111, 1, 0, 0, 0, 86, 87,
-		10, 3, 0, 0, 87, 88, 5, 35, 0, 0, 88, 111, 3, 2, 1, 4, 89, 90, 10, 2, 0,
-		0, 90, 91, 5, 36, 0, 0, 91, 111, 3, 2, 1, 3, 92, 93, 10, 22, 0, 0, 93,
-		94, 5, 1, 0, 0, 94, 111, 3, 6, 3, 0, 95, 96, 10, 21, 0, 0, 96, 97, 5, 2,
-		0, 0, 97, 98, 3, 12, 6, 0, 98, 99, 5, 3, 0, 0, 99, 111, 1, 0, 0, 0, 100,
-		104, 10, 20, 0, 0, 101, 102, 5, 4, 0, 0, 102, 105, 5, 5, 0, 0, 103, 105,
-		5, 4, 0, 0, 104, 101, 1, 0, 0, 0, 104, 103, 1, 0, 0, 0, 105, 106, 1, 0,
-		0, 0, 106, 111, 3, 16, 8, 0, 107, 108, 10, 1, 0, 0, 108, 109, 5, 37, 0,
-		0, 109, 111, 3, 16, 8, 0, 110, 43, 1, 0, 0, 0, 110, 50, 1, 0, 0, 0, 110,
-		53, 1, 0, 0, 0, 110, 56, 1, 0, 0, 0, 110, 59, 1, 0, 0, 0, 110, 62, 1, 0,
-		0, 0, 110, 65, 1, 0, 0, 0, 110, 68, 1, 0, 0, 0, 110, 71, 1, 0, 0, 0, 110,
-		74, 1, 0, 0, 0, 110, 77, 1, 0, 0, 0, 110, 80, 1, 0, 0, 0, 110, 86, 1, 0,
-		0, 0, 110, 89, 1, 0, 0, 0, 110, 92, 1, 0, 0, 0, 110, 95, 1, 0, 0, 0, 110,
-		100, 1, 0, 0, 0, 110, 107, 1, 0, 0, 0, 111, 114, 1, 0, 0, 0, 112, 110,
-		1, 0, 0, 0, 112, 113, 1, 0, 0, 0, 113, 3, 1, 0, 0, 0, 114, 112, 1, 0, 0,
-		0, 115, 118, 3, 14, 7, 0, 116, 118, 3, 6, 3, 0, 117, 115, 1, 0, 0, 0, 117,
-		116, 1, 0, 0, 0, 118, 5, 1, 0, 0, 0, 119, 129, 3, 10, 5, 0, 120, 129, 5,
-		14, 0, 0, 121, 122, 3, 10, 5, 0, 122, 124, 5, 7, 0, 0, 123, 125, 3, 8,
-		4, 0, 124, 123, 1, 0, 0, 0, 124, 125, 1, 0, 0, 0, 125, 126, 1, 0, 0, 0,
-		126, 127, 5, 8, 0, 0, 127, 129, 1, 0, 0, 0, 128, 119, 1, 0, 0, 0, 128,
-		120, 1, 0, 0, 0, 128, 121, 1, 0, 0, 0, 129, 7, 1, 0, 0, 0, 130, 135, 3,
-		2, 1, 0, 131, 132, 5, 38, 0, 0, 132, 134, 3, 2, 1, 0, 133, 131, 1, 0, 0,
-		0, 134, 137, 1, 0, 0, 0, 135, 133, 1, 0, 0, 0, 135, 136, 1, 0, 0, 0, 136,
-		9, 1, 0, 0, 0, 137, 135, 1, 0, 0, 0, 138, 139, 5, 46, 0, 0, 139, 11, 1,
-		0, 0, 0, 140, 142, 3, 2, 1, 0, 141, 140, 1, 0, 0, 0, 141, 142, 1, 0, 0,
-		0, 142, 143, 1, 0, 0, 0, 143, 145, 5, 34, 0, 0, 144, 146, 3, 2, 1, 0, 145,
-		144, 1, 0, 0, 0, 145, 146, 1, 0, 0, 0, 146, 149, 1, 0, 0, 0, 147, 149,
-		3, 2, 1, 0, 148, 141, 1, 0, 0, 0, 148, 147, 1, 0, 0, 0, 149, 13, 1, 0,
-		0, 0, 150, 157, 3, 20, 10, 0, 151, 157, 3, 22, 11, 0, 152, 157, 3, 24,
-		12, 0, 153, 157, 7, 9, 0, 0, 154, 157, 5, 41, 0, 0, 155, 157, 3, 18, 9,
-		0, 156, 150, 1, 0, 0, 0, 156, 151, 1, 0, 0, 0, 156, 152, 1, 0, 0, 0, 156,
-		153, 1, 0, 0, 0, 156, 154, 1, 0, 0, 0, 156, 155, 1, 0, 0, 0, 157, 15, 1,
-		0, 0, 0, 158, 159, 7, 10, 0, 0, 159, 17, 1, 0, 0, 0, 160, 169, 5, 2, 0,
-		0, 161, 166, 3, 14, 7, 0, 162, 163, 5, 38, 0, 0, 163, 165, 3, 14, 7, 0,
-		164, 162, 1, 0, 0, 0, 165, 168, 1, 0, 0, 0, 166, 164, 1, 0, 0, 0, 166,
-		167, 1, 0, 0, 0, 167, 170, 1, 0, 0, 0, 168, 166, 1, 0, 0, 0, 169, 161,
-		1, 0, 0, 0, 169, 170, 1, 0, 0, 0, 170, 171, 1, 0, 0, 0, 171, 172, 5, 3,
-		0, 0, 172, 19, 1, 0, 0, 0, 173, 177, 5, 53, 0, 0, 174, 177, 5, 54, 0, 0,
-		175, 177, 5, 55, 0, 0, 176, 173, 1, 0, 0, 0, 176, 174, 1, 0, 0, 0, 176,
-		175, 1, 0, 0, 0, 177, 21, 1, 0, 0, 0, 178, 183, 5, 47, 0, 0, 179, 183,
-		5, 48, 0, 0, 180, 183, 5, 49, 0, 0, 181, 183, 5, 50, 0, 0, 182, 178, 1,
-		0, 0, 0, 182, 179, 1, 0, 0, 0, 182, 180, 1, 0, 0, 0, 182, 181, 1, 0, 0,
-		0, 183, 23, 1, 0, 0, 0, 184, 187, 5, 52, 0, 0, 185, 187, 5, 51, 0, 0, 186,
-		184, 1, 0, 0, 0, 186, 185, 1, 0, 0, 0, 187, 25, 1, 0, 0, 0, 18, 41, 47,
-		104, 110, 112, 117, 124, 128, 135, 141, 145, 148, 156, 166, 169, 176, 182,
-		186,
+		1, 1, 1, 1, 1, 1, 1, 3, 1, 108, 8, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 114,
+		8, 1, 10, 1, 12, 1, 117, 9, 1, 1, 2, 1, 2, 3, 2, 121, 8, 2, 1, 3, 1, 3,
+		1, 3, 1, 3, 1, 3, 3, 3, 128, 8, 3, 1, 3, 1, 3, 3, 3, 132, 8, 3, 1, 4, 1,
+		4, 1, 4, 5, 4, 137, 8, 4, 10, 4, 12, 4, 140, 9, 4, 1, 5, 1, 5, 1, 6, 3,
+		6, 145, 8, 6, 1, 6, 1, 6, 3, 6, 149, 8, 6, 1, 6, 3, 6, 152, 8, 6, 1, 7,
+		1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 3, 7, 160, 8, 7, 1, 8, 1, 8, 1, 9, 1, 9,
+		1, 9, 1, 9, 5, 9, 168, 8, 9, 10, 9, 12, 9, 171, 9, 9, 3, 9, 173, 8, 9,
+		1, 9, 1, 9, 1, 10, 1, 10, 1, 10, 3, 10, 180, 8, 10, 1, 11, 1, 11, 1, 11,
+		1, 11, 3, 11, 186, 8, 11, 1, 12, 1, 12, 3, 12, 190, 8, 12, 1, 12, 0, 1,
+		2, 13, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 0, 12, 2, 0, 5, 5,
+		9, 9, 1, 0, 11, 12, 1, 0, 14, 17, 1, 0, 18, 19, 1, 0, 20, 21, 1, 0, 22,
+		23, 1, 0, 24, 25, 1, 0, 27, 28, 1, 0, 29, 32, 1, 0, 33, 34, 1, 0, 41, 42,
+		1, 0, 44, 47, 224, 0, 26, 1, 0, 0, 0, 2, 41, 1, 0, 0, 0, 4, 120, 1, 0,
+		0, 0, 6, 131, 1, 0, 0, 0, 8, 133, 1, 0, 0, 0, 10, 141, 1, 0, 0, 0, 12,
+		151, 1, 0, 0, 0, 14, 159, 1, 0, 0, 0, 16, 161, 1, 0, 0, 0, 18, 163, 1,
+		0, 0, 0, 20, 179, 1, 0, 0, 0, 22, 185, 1, 0, 0, 0, 24, 189, 1, 0, 0, 0,
+		26, 27, 3, 2, 1, 0, 27, 28, 5, 0, 0, 1, 28, 1, 1, 0, 0, 0, 29, 30, 6, 1,
+		-1, 0, 30, 42, 3, 4, 2, 0, 31, 32, 5, 7, 0, 0, 32, 33, 3, 2, 1, 0, 33,
+		34, 5, 8, 0, 0, 34, 42, 1, 0, 0, 0, 35, 36, 7, 0, 0, 0, 36, 42, 3, 2, 1,
+		18, 37, 38, 5, 10, 0, 0, 38, 42, 3, 2, 1, 17, 39, 40, 7, 1, 0, 0, 40, 42,
+		3, 2, 1, 16, 41, 29, 1, 0, 0, 0, 41, 31, 1, 0, 0, 0, 41, 35, 1, 0, 0, 0,
+		41, 37, 1, 0, 0, 0, 41, 39, 1, 0, 0, 0, 42, 115, 1, 0, 0, 0, 43, 47, 10,
+		20, 0, 0, 44, 48, 5, 6, 0, 0, 45, 46, 5, 5, 0, 0, 46, 48, 5, 6, 0, 0, 47,
+		44, 1, 0, 0, 0, 47, 45, 1, 0, 0, 0, 48, 49, 1, 0, 0, 0, 49, 114, 3, 2,
+		1, 21, 50, 51, 10, 15, 0, 0, 51, 52, 5, 13, 0, 0, 52, 114, 3, 2, 1, 16,
+		53, 54, 10, 14, 0, 0, 54, 55, 7, 2, 0, 0, 55, 114, 3, 2, 1, 15, 56, 57,
+		10, 13, 0, 0, 57, 58, 7, 1, 0, 0, 58, 114, 3, 2, 1, 14, 59, 60, 10, 12,
+		0, 0, 60, 61, 7, 3, 0, 0, 61, 114, 3, 2, 1, 13, 62, 63, 10, 11, 0, 0, 63,
+		64, 7, 4, 0, 0, 64, 114, 3, 2, 1, 12, 65, 66, 10, 10, 0, 0, 66, 67, 7,
+		5, 0, 0, 67, 114, 3, 2, 1, 11, 68, 69, 10, 9, 0, 0, 69, 70, 7, 6, 0, 0,
+		70, 114, 3, 2, 1, 10, 71, 72, 10, 8, 0, 0, 72, 73, 5, 26, 0, 0, 73, 114,
+		3, 2, 1, 9, 74, 75, 10, 7, 0, 0, 75, 76, 7, 7, 0, 0, 76, 114, 3, 2, 1,
+		8, 77, 78, 10, 6, 0, 0, 78, 79, 7, 8, 0, 0, 79, 114, 3, 2, 1, 7, 80, 81,
+		10, 5, 0, 0, 81, 82, 7, 9, 0, 0, 82, 114, 3, 2, 1, 6, 83, 84, 10, 4, 0,
+		0, 84, 85, 5, 35, 0, 0, 85, 86, 3, 2, 1, 0, 86, 87, 5, 36, 0, 0, 87, 88,
+		3, 2, 1, 5, 88, 114, 1, 0, 0, 0, 89, 90, 10, 3, 0, 0, 90, 91, 5, 37, 0,
+		0, 91, 114, 3, 2, 1, 4, 92, 93, 10, 2, 0, 0, 93, 94, 5, 38, 0, 0, 94, 114,
+		3, 2, 1, 3, 95, 96, 10, 23, 0, 0, 96, 97, 5, 1, 0, 0, 97, 114, 3, 6, 3,
+		0, 98, 99, 10, 22, 0, 0, 99, 100, 5, 2, 0, 0, 100, 101, 3, 12, 6, 0, 101,
+		102, 5, 3, 0, 0, 102, 114, 1, 0, 0, 0, 103, 107, 10, 21, 0, 0, 104, 105,
+		5, 4, 0, 0, 105, 108, 5, 5, 0, 0, 106, 108, 5, 4, 0, 0, 107, 104, 1, 0,
+		0, 0, 107, 106, 1, 0, 0, 0, 108, 109, 1, 0, 0, 0, 109, 114, 3, 16, 8, 0,
+		110, 111, 10, 1, 0, 0, 111, 112, 5, 39, 0, 0, 112, 114, 3, 16, 8, 0, 113,
+		43, 1, 0, 0, 0, 113, 50, 1, 0, 0, 0, 113, 53, 1, 0, 0, 0, 113, 56, 1, 0,
+		0, 0, 113, 59, 1, 0, 0, 0, 113, 62, 1, 0, 0, 0, 113, 65, 1, 0, 0, 0, 113,
+		68, 1, 0, 0, 0, 113, 71, 1, 0, 0, 0, 113, 74, 1, 0, 0, 0, 113, 77, 1, 0,
+		0, 0, 113, 80, 1, 0, 0, 0, 113, 83, 1, 0, 0, 0, 113, 89, 1, 0, 0, 0, 113,
+		92, 1, 0, 0, 0, 113, 95, 1, 0, 0, 0, 113, 98, 1, 0, 0, 0, 113, 103, 1,
+		0, 0, 0, 113, 110, 1, 0, 0, 0, 114, 117, 1, 0, 0, 0, 115, 113, 1, 0, 0,
+		0, 115, 116, 1, 0, 0, 0, 116, 3, 1, 0, 0, 0, 117, 115, 1, 0, 0, 0, 118,
+		121, 3, 14, 7, 0, 119, 121, 3, 6, 3, 0, 120, 118, 1, 0, 0, 0, 120, 119,
+		1, 0, 0, 0, 121, 5, 1, 0, 0, 0, 122, 132, 3, 10, 5, 0, 123, 132, 5, 14,
+		0, 0, 124, 125, 3, 10, 5, 0, 125, 127, 5, 7, 0, 0, 126, 128, 3, 8, 4, 0,
+		127, 126, 1, 0, 0, 0, 127, 128, 1, 0, 0, 0, 128, 129, 1, 0, 0, 0, 129,
+		130, 5, 8, 0, 0, 130, 132, 1, 0, 0, 0, 131, 122, 1, 0, 0, 0, 131, 123,
+		1, 0, 0, 0, 131, 124, 1, 0, 0, 0, 132, 7, 1, 0, 0, 0, 133, 138, 3, 2, 1,
+		0, 134, 135, 5, 40, 0, 0, 135, 137, 3, 2, 1, 0, 136, 134, 1, 0, 0, 0, 137,
+		140, 1, 0, 0, 0, 138, 136, 1, 0, 0, 0, 138, 139, 1, 0, 0, 0, 139, 9, 1,
+		0, 0, 0, 140, 138, 1, 0, 0, 0, 141, 142, 5, 48, 0, 0, 142, 11, 1, 0, 0,
+		0, 143, 145, 3, 2, 1, 0, 144, 143, 1, 0, 0, 0, 144, 145, 1, 0, 0, 0, 145,
+		146, 1, 0, 0, 0, 146, 148, 5, 36, 0, 0, 147, 149, 3, 2, 1, 0, 148, 147,
+		1, 0, 0, 0, 148, 149, 1, 0, 0, 0, 149, 152, 1, 0, 0, 0, 150, 152, 3, 2,
+		1, 0, 151, 144, 1, 0, 0, 0, 151, 150, 1, 0, 0, 0, 152, 13, 1, 0, 0, 0,
+		153, 160, 3, 20, 10, 0, 154, 160, 3, 22, 11, 0, 155, 160, 3, 24, 12, 0,
+		156, 160, 7, 10, 0, 0, 157, 160, 5, 43, 0, 0, 158, 160, 3, 18, 9, 0, 159,
+		153, 1, 0, 0, 0, 159, 154, 1, 0, 0, 0, 159, 155, 1, 0, 0, 0, 159, 156,
+		1, 0, 0, 0, 159, 157, 1, 0, 0, 0, 159, 158, 1, 0, 0, 0, 160, 15, 1, 0,
+		0, 0, 161, 162, 7, 11, 0, 0, 162, 17, 1, 0, 0, 0, 163, 172, 5, 2, 0, 0,
+		164, 169, 3, 14, 7, 0, 165, 166, 5, 40, 0, 0, 166, 168, 3, 14, 7, 0, 167,
+		165, 1, 0, 0, 0, 168, 171, 1, 0, 0, 0, 169, 167, 1, 0, 0, 0, 169, 170,
+		1, 0, 0, 0, 170, 173, 1, 0, 0, 0, 171, 169, 1, 0, 0, 0, 172, 164, 1, 0,
+		0, 0, 172, 173, 1, 0, 0, 0, 173, 174, 1, 0, 0, 0, 174, 175, 5, 3, 0, 0,
+		175, 19, 1, 0, 0, 0, 176, 180, 5, 55, 0, 0, 177, 180, 5, 56, 0, 0, 178,
+		180, 5, 57, 0, 0, 179, 176, 1, 0, 0, 0, 179, 177, 1, 0, 0, 0, 179, 178,
+		1, 0, 0, 0, 180, 21, 1, 0, 0, 0, 181, 186, 5, 49, 0, 0, 182, 186, 5, 50,
+		0, 0, 183, 186, 5, 51, 0, 0, 184, 186, 5, 52, 0, 0, 185, 181, 1, 0, 0,
+		0, 185, 182, 1, 0, 0, 0, 185, 183, 1, 0, 0, 0, 185, 184, 1, 0, 0, 0, 186,
+		23, 1, 0, 0, 0, 187, 190, 5, 54, 0, 0, 188, 190, 5, 53, 0, 0, 189, 187,
+		1, 0, 0, 0, 189, 188, 1, 0, 0, 0, 190, 25, 1, 0, 0, 0, 18, 41, 47, 107,
+		113, 115, 120, 127, 131, 138, 144, 148, 151, 159, 169, 172, 179, 185, 189,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -225,18 +226,20 @@ const (
 	DCellParserT__42               = 43
 	DCellParserT__43               = 44
 	DCellParserT__44               = 45
-	DCellParserIDENTIFIER          = 46
-	DCellParserDECIMAL_INTEGER     = 47
-	DCellParserHEX_INTEGER         = 48
-	DCellParserOCTAL_INTEGER       = 49
-	DCellParserBINARY_INTEGER      = 50
-	DCellParserDECIMAL_FLOAT       = 51
-	DCellParserSCIENTIFIC_FLOAT    = 52
-	DCellParserSINGLE_QUOTE_STRING = 53
-	DCellParserDOUBLE_QUOTE_STRING = 54
-	DCellParserTRIPLE_QUOTE_STRING = 55
-	DCellParserWS                  = 56
-	DCellParserCOMMENT             = 57
+	DCellParserT__45               = 46
+	DCellParserT__46               = 47
+	DCellParserIDENTIFIER          = 48
+	DCellParserDECIMAL_INTEGER     = 49
+	DCellParserHEX_INTEGER         = 50
+	DCellParserOCTAL_INTEGER       = 51
+	DCellParserBINARY_INTEGER      = 52
+	DCellParserDECIMAL_FLOAT       = 53
+	DCellParserSCIENTIFIC_FLOAT    = 54
+	DCellParserSINGLE_QUOTE_STRING = 55
+	DCellParserDOUBLE_QUOTE_STRING = 56
+	DCellParserTRIPLE_QUOTE_STRING = 57
+	DCellParserWS                  = 58
+	DCellParserCOMMENT             = 59
 )
 
 // DCellParser rules.
@@ -1350,6 +1353,65 @@ func (s *EqualityExpressionContext) Expression(i int) IExpressionContext {
 	return t.(IExpressionContext)
 }
 
+type ImplicationExpressionContext struct {
+	ExpressionContext
+}
+
+func NewImplicationExpressionContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ImplicationExpressionContext {
+	var p = new(ImplicationExpressionContext)
+
+	InitEmptyExpressionContext(&p.ExpressionContext)
+	p.parser = parser
+	p.CopyAll(ctx.(*ExpressionContext))
+
+	return p
+}
+
+func (s *ImplicationExpressionContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ImplicationExpressionContext) AllExpression() []IExpressionContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IExpressionContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IExpressionContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IExpressionContext); ok {
+			tst[i] = t.(IExpressionContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *ImplicationExpressionContext) Expression(i int) IExpressionContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IExpressionContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpressionContext)
+}
+
 type ExponentiationExpressionContext struct {
 	ExpressionContext
 }
@@ -1636,7 +1698,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case DCellParserT__1, DCellParserT__13, DCellParserT__38, DCellParserT__39, DCellParserT__40, DCellParserIDENTIFIER, DCellParserDECIMAL_INTEGER, DCellParserHEX_INTEGER, DCellParserOCTAL_INTEGER, DCellParserBINARY_INTEGER, DCellParserDECIMAL_FLOAT, DCellParserSCIENTIFIC_FLOAT, DCellParserSINGLE_QUOTE_STRING, DCellParserDOUBLE_QUOTE_STRING, DCellParserTRIPLE_QUOTE_STRING:
+	case DCellParserT__1, DCellParserT__13, DCellParserT__40, DCellParserT__41, DCellParserT__42, DCellParserIDENTIFIER, DCellParserDECIMAL_INTEGER, DCellParserHEX_INTEGER, DCellParserOCTAL_INTEGER, DCellParserBINARY_INTEGER, DCellParserDECIMAL_FLOAT, DCellParserSCIENTIFIC_FLOAT, DCellParserSINGLE_QUOTE_STRING, DCellParserDOUBLE_QUOTE_STRING, DCellParserTRIPLE_QUOTE_STRING:
 		localctx = NewTermExpressionContext(p, localctx)
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
@@ -1688,7 +1750,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 		}
 		{
 			p.SetState(36)
-			p.expression(17)
+			p.expression(18)
 		}
 
 	case DCellParserT__9:
@@ -1705,7 +1767,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 		}
 		{
 			p.SetState(38)
-			p.expression(16)
+			p.expression(17)
 		}
 
 	case DCellParserT__10, DCellParserT__11:
@@ -1725,7 +1787,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 		}
 		{
 			p.SetState(40)
-			p.expression(15)
+			p.expression(16)
 		}
 
 	default:
@@ -1733,7 +1795,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 		goto errorExit
 	}
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(112)
+	p.SetState(115)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -1748,7 +1810,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				p.TriggerExitRuleEvent()
 			}
 			_prevctx = localctx
-			p.SetState(110)
+			p.SetState(113)
 			p.GetErrorHandler().Sync(p)
 			if p.HasError() {
 				goto errorExit
@@ -1760,8 +1822,8 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
 				p.SetState(43)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 19)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 19)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 20)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 20)", ""))
 					goto errorExit
 				}
 				p.SetState(47)
@@ -1805,7 +1867,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(49)
-					p.expression(20)
+					p.expression(21)
 				}
 
 			case 2:
@@ -1813,8 +1875,8 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
 				p.SetState(50)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 14)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 14)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 15)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 15)", ""))
 					goto errorExit
 				}
 				{
@@ -1827,7 +1889,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(52)
-					p.expression(15)
+					p.expression(16)
 				}
 
 			case 3:
@@ -1835,8 +1897,8 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
 				p.SetState(53)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 13)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 13)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 14)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 14)", ""))
 					goto errorExit
 				}
 				{
@@ -1852,7 +1914,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(55)
-					p.expression(14)
+					p.expression(15)
 				}
 
 			case 4:
@@ -1860,8 +1922,8 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
 				p.SetState(56)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 12)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 12)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 13)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 13)", ""))
 					goto errorExit
 				}
 				{
@@ -1877,7 +1939,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(58)
-					p.expression(13)
+					p.expression(14)
 				}
 
 			case 5:
@@ -1885,8 +1947,8 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
 				p.SetState(59)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 11)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 11)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 12)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 12)", ""))
 					goto errorExit
 				}
 				{
@@ -1902,7 +1964,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(61)
-					p.expression(12)
+					p.expression(13)
 				}
 
 			case 6:
@@ -1910,8 +1972,8 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
 				p.SetState(62)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 10)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 10)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 11)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 11)", ""))
 					goto errorExit
 				}
 				{
@@ -1927,16 +1989,16 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(64)
-					p.expression(11)
+					p.expression(12)
 				}
 
 			case 7:
-				localctx = NewShiftExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				localctx = NewImplicationExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
 				p.SetState(65)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 9)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 9)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 10)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 10)", ""))
 					goto errorExit
 				}
 				{
@@ -1952,45 +2014,23 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(67)
-					p.expression(10)
+					p.expression(11)
 				}
 
 			case 8:
-				localctx = NewBitwiseAndExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				localctx = NewShiftExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
 				p.SetState(68)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 8)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 8)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 9)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 9)", ""))
 					goto errorExit
 				}
 				{
 					p.SetState(69)
-					p.Match(DCellParserT__23)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(70)
-					p.expression(9)
-				}
-
-			case 9:
-				localctx = NewBitwiseOrExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
-				p.SetState(71)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 7)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 7)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(72)
 					_la = p.GetTokenStream().LA(1)
 
-					if !(_la == DCellParserT__24 || _la == DCellParserT__25) {
+					if !(_la == DCellParserT__23 || _la == DCellParserT__24) {
 						p.GetErrorHandler().RecoverInline(p)
 					} else {
 						p.GetErrorHandler().ReportMatch(p)
@@ -1998,24 +2038,46 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 					}
 				}
 				{
+					p.SetState(70)
+					p.expression(10)
+				}
+
+			case 9:
+				localctx = NewBitwiseAndExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
+				p.SetState(71)
+
+				if !(p.Precpred(p.GetParserRuleContext(), 8)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 8)", ""))
+					goto errorExit
+				}
+				{
+					p.SetState(72)
+					p.Match(DCellParserT__25)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
+				}
+				{
 					p.SetState(73)
-					p.expression(8)
+					p.expression(9)
 				}
 
 			case 10:
-				localctx = NewInequalityExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				localctx = NewBitwiseOrExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
 				p.SetState(74)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 6)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 6)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 7)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 7)", ""))
 					goto errorExit
 				}
 				{
 					p.SetState(75)
 					_la = p.GetTokenStream().LA(1)
 
-					if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&2013265920) != 0) {
+					if !(_la == DCellParserT__26 || _la == DCellParserT__27) {
 						p.GetErrorHandler().RecoverInline(p)
 					} else {
 						p.GetErrorHandler().ReportMatch(p)
@@ -2024,23 +2086,23 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(76)
-					p.expression(7)
+					p.expression(8)
 				}
 
 			case 11:
-				localctx = NewEqualityExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				localctx = NewInequalityExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
 				p.SetState(77)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 5)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 5)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 6)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 6)", ""))
 					goto errorExit
 				}
 				{
 					p.SetState(78)
 					_la = p.GetTokenStream().LA(1)
 
-					if !(_la == DCellParserT__30 || _la == DCellParserT__31) {
+					if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&8053063680) != 0) {
 						p.GetErrorHandler().RecoverInline(p)
 					} else {
 						p.GetErrorHandler().ReportMatch(p)
@@ -2049,54 +2111,45 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(79)
-					p.expression(6)
+					p.expression(7)
 				}
 
 			case 12:
-				localctx = NewTernaryExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				localctx = NewEqualityExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
 				p.SetState(80)
+
+				if !(p.Precpred(p.GetParserRuleContext(), 5)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 5)", ""))
+					goto errorExit
+				}
+				{
+					p.SetState(81)
+					_la = p.GetTokenStream().LA(1)
+
+					if !(_la == DCellParserT__32 || _la == DCellParserT__33) {
+						p.GetErrorHandler().RecoverInline(p)
+					} else {
+						p.GetErrorHandler().ReportMatch(p)
+						p.Consume()
+					}
+				}
+				{
+					p.SetState(82)
+					p.expression(6)
+				}
+
+			case 13:
+				localctx = NewTernaryExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
+				p.SetState(83)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 4)) {
 					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 4)", ""))
 					goto errorExit
 				}
 				{
-					p.SetState(81)
-					p.Match(DCellParserT__32)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(82)
-					p.expression(0)
-				}
-				{
-					p.SetState(83)
-					p.Match(DCellParserT__33)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
 					p.SetState(84)
-					p.expression(5)
-				}
-
-			case 13:
-				localctx = NewElvisExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
-				p.SetState(86)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(87)
 					p.Match(DCellParserT__34)
 					if p.HasError() {
 						// Recognition error - abort rule
@@ -2104,21 +2157,11 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 					}
 				}
 				{
-					p.SetState(88)
-					p.expression(4)
-				}
-
-			case 14:
-				localctx = NewCoalesceExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
-				p.SetState(89)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 2)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
-					goto errorExit
+					p.SetState(85)
+					p.expression(0)
 				}
 				{
-					p.SetState(90)
+					p.SetState(86)
 					p.Match(DCellParserT__35)
 					if p.HasError() {
 						// Recognition error - abort rule
@@ -2126,22 +2169,44 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 					}
 				}
 				{
+					p.SetState(87)
+					p.expression(5)
+				}
+
+			case 14:
+				localctx = NewElvisExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
+				p.SetState(89)
+
+				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
+					goto errorExit
+				}
+				{
+					p.SetState(90)
+					p.Match(DCellParserT__36)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
+				}
+				{
 					p.SetState(91)
-					p.expression(3)
+					p.expression(4)
 				}
 
 			case 15:
-				localctx = NewInvocationExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				localctx = NewCoalesceExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
 				p.SetState(92)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 22)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 22)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 2)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 					goto errorExit
 				}
 				{
 					p.SetState(93)
-					p.Match(DCellParserT__0)
+					p.Match(DCellParserT__37)
 					if p.HasError() {
 						// Recognition error - abort rule
 						goto errorExit
@@ -2149,21 +2214,21 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(94)
-					p.Invocation()
+					p.expression(3)
 				}
 
 			case 16:
-				localctx = NewIndexExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				localctx = NewInvocationExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
 				p.SetState(95)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 21)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 21)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 23)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 23)", ""))
 					goto errorExit
 				}
 				{
 					p.SetState(96)
-					p.Match(DCellParserT__1)
+					p.Match(DCellParserT__0)
 					if p.HasError() {
 						// Recognition error - abort rule
 						goto errorExit
@@ -2171,10 +2236,32 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(97)
+					p.Invocation()
+				}
+
+			case 17:
+				localctx = NewIndexExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
+				p.SetState(98)
+
+				if !(p.Precpred(p.GetParserRuleContext(), 22)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 22)", ""))
+					goto errorExit
+				}
+				{
+					p.SetState(99)
+					p.Match(DCellParserT__1)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
+				}
+				{
+					p.SetState(100)
 					p.Index()
 				}
 				{
-					p.SetState(98)
+					p.SetState(101)
 					p.Match(DCellParserT__2)
 					if p.HasError() {
 						// Recognition error - abort rule
@@ -2182,16 +2269,16 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 					}
 				}
 
-			case 17:
+			case 18:
 				localctx = NewIsExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
-				p.SetState(100)
+				p.SetState(103)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 20)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 20)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 21)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 21)", ""))
 					goto errorExit
 				}
-				p.SetState(104)
+				p.SetState(107)
 				p.GetErrorHandler().Sync(p)
 				if p.HasError() {
 					goto errorExit
@@ -2200,7 +2287,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 				switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 2, p.GetParserRuleContext()) {
 				case 1:
 					{
-						p.SetState(101)
+						p.SetState(104)
 						p.Match(DCellParserT__3)
 						if p.HasError() {
 							// Recognition error - abort rule
@@ -2208,7 +2295,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 						}
 					}
 					{
-						p.SetState(102)
+						p.SetState(105)
 						p.Match(DCellParserT__4)
 						if p.HasError() {
 							// Recognition error - abort rule
@@ -2218,7 +2305,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 
 				case 2:
 					{
-						p.SetState(103)
+						p.SetState(106)
 						p.Match(DCellParserT__3)
 						if p.HasError() {
 							// Recognition error - abort rule
@@ -2230,29 +2317,29 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 					goto errorExit
 				}
 				{
-					p.SetState(106)
+					p.SetState(109)
 					p.Type_()
 				}
 
-			case 18:
+			case 19:
 				localctx = NewCastExpressionContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, DCellParserRULE_expression)
-				p.SetState(107)
+				p.SetState(110)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 1)) {
 					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 1)", ""))
 					goto errorExit
 				}
 				{
-					p.SetState(108)
-					p.Match(DCellParserT__36)
+					p.SetState(111)
+					p.Match(DCellParserT__38)
 					if p.HasError() {
 						// Recognition error - abort rule
 						goto errorExit
 					}
 				}
 				{
-					p.SetState(109)
+					p.SetState(112)
 					p.Type_()
 				}
 
@@ -2261,7 +2348,7 @@ func (p *DCellParser) expression(_p int) (localctx IExpressionContext) {
 			}
 
 		}
-		p.SetState(114)
+		p.SetState(117)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -2410,18 +2497,18 @@ func (s *InvocationTermContext) Invocation() IInvocationContext {
 func (p *DCellParser) Term() (localctx ITermContext) {
 	localctx = NewTermContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 4, DCellParserRULE_term)
-	p.SetState(117)
+	p.SetState(120)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case DCellParserT__1, DCellParserT__38, DCellParserT__39, DCellParserT__40, DCellParserDECIMAL_INTEGER, DCellParserHEX_INTEGER, DCellParserOCTAL_INTEGER, DCellParserBINARY_INTEGER, DCellParserDECIMAL_FLOAT, DCellParserSCIENTIFIC_FLOAT, DCellParserSINGLE_QUOTE_STRING, DCellParserDOUBLE_QUOTE_STRING, DCellParserTRIPLE_QUOTE_STRING:
+	case DCellParserT__1, DCellParserT__40, DCellParserT__41, DCellParserT__42, DCellParserDECIMAL_INTEGER, DCellParserHEX_INTEGER, DCellParserOCTAL_INTEGER, DCellParserBINARY_INTEGER, DCellParserDECIMAL_FLOAT, DCellParserSCIENTIFIC_FLOAT, DCellParserSINGLE_QUOTE_STRING, DCellParserDOUBLE_QUOTE_STRING, DCellParserTRIPLE_QUOTE_STRING:
 		localctx = NewLiteralTermContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(115)
+			p.SetState(118)
 			p.Literal()
 		}
 
@@ -2429,7 +2516,7 @@ func (p *DCellParser) Term() (localctx ITermContext) {
 		localctx = NewInvocationTermContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(116)
+			p.SetState(119)
 			p.Invocation()
 		}
 
@@ -2612,7 +2699,7 @@ func (p *DCellParser) Invocation() (localctx IInvocationContext) {
 	p.EnterRule(localctx, 6, DCellParserRULE_invocation)
 	var _la int
 
-	p.SetState(128)
+	p.SetState(131)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -2623,7 +2710,7 @@ func (p *DCellParser) Invocation() (localctx IInvocationContext) {
 		localctx = NewMemberInvocationContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(119)
+			p.SetState(122)
 			p.Identifier()
 		}
 
@@ -2631,7 +2718,7 @@ func (p *DCellParser) Invocation() (localctx IInvocationContext) {
 		localctx = NewWildcardInvocationContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(120)
+			p.SetState(123)
 			p.Match(DCellParserT__13)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2643,33 +2730,33 @@ func (p *DCellParser) Invocation() (localctx IInvocationContext) {
 		localctx = NewFunctionInvocationContext(p, localctx)
 		p.EnterOuterAlt(localctx, 3)
 		{
-			p.SetState(121)
+			p.SetState(124)
 			p.Identifier()
 		}
 		{
-			p.SetState(122)
+			p.SetState(125)
 			p.Match(DCellParserT__6)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
-		p.SetState(124)
+		p.SetState(127)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&71991073584471716) != 0 {
+		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&287964294337814180) != 0 {
 			{
-				p.SetState(123)
+				p.SetState(126)
 				p.ParameterList()
 			}
 
 		}
 		{
-			p.SetState(126)
+			p.SetState(129)
 			p.Match(DCellParserT__7)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2797,31 +2884,31 @@ func (p *DCellParser) ParameterList() (localctx IParameterListContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(130)
+		p.SetState(133)
 		p.expression(0)
 	}
-	p.SetState(135)
+	p.SetState(138)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == DCellParserT__37 {
+	for _la == DCellParserT__39 {
 		{
-			p.SetState(131)
-			p.Match(DCellParserT__37)
+			p.SetState(134)
+			p.Match(DCellParserT__39)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
 		{
-			p.SetState(132)
+			p.SetState(135)
 			p.expression(0)
 		}
 
-		p.SetState(137)
+		p.SetState(140)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -2905,7 +2992,7 @@ func (p *DCellParser) Identifier() (localctx IIdentifierContext) {
 	p.EnterRule(localctx, 10, DCellParserRULE_identifier)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(138)
+		p.SetState(141)
 		p.Match(DCellParserIDENTIFIER)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3078,7 +3165,7 @@ func (p *DCellParser) Index() (localctx IIndexContext) {
 	p.EnterRule(localctx, 12, DCellParserRULE_index)
 	var _la int
 
-	p.SetState(148)
+	p.SetState(151)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -3088,38 +3175,38 @@ func (p *DCellParser) Index() (localctx IIndexContext) {
 	case 1:
 		localctx = NewSliceIndexContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
-		p.SetState(141)
+		p.SetState(144)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&71991073584471716) != 0 {
+		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&287964294337814180) != 0 {
 			{
-				p.SetState(140)
+				p.SetState(143)
 				p.expression(0)
 			}
 
 		}
 		{
-			p.SetState(143)
-			p.Match(DCellParserT__33)
+			p.SetState(146)
+			p.Match(DCellParserT__35)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
-		p.SetState(145)
+		p.SetState(148)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&71991073584471716) != 0 {
+		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&287964294337814180) != 0 {
 			{
-				p.SetState(144)
+				p.SetState(147)
 				p.expression(0)
 			}
 
@@ -3129,7 +3216,7 @@ func (p *DCellParser) Index() (localctx IIndexContext) {
 		localctx = NewExpressionIndexContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(147)
+			p.SetState(150)
 			p.expression(0)
 		}
 
@@ -3381,7 +3468,7 @@ func (p *DCellParser) Literal() (localctx ILiteralContext) {
 	p.EnterRule(localctx, 14, DCellParserRULE_literal)
 	var _la int
 
-	p.SetState(156)
+	p.SetState(159)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -3392,7 +3479,7 @@ func (p *DCellParser) Literal() (localctx ILiteralContext) {
 		localctx = NewStringLiteralContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(150)
+			p.SetState(153)
 			p.String_()
 		}
 
@@ -3400,7 +3487,7 @@ func (p *DCellParser) Literal() (localctx ILiteralContext) {
 		localctx = NewIntegerLiteralContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(151)
+			p.SetState(154)
 			p.Integer()
 		}
 
@@ -3408,18 +3495,18 @@ func (p *DCellParser) Literal() (localctx ILiteralContext) {
 		localctx = NewFloatLiteralContext(p, localctx)
 		p.EnterOuterAlt(localctx, 3)
 		{
-			p.SetState(152)
+			p.SetState(155)
 			p.Float()
 		}
 
-	case DCellParserT__38, DCellParserT__39:
+	case DCellParserT__40, DCellParserT__41:
 		localctx = NewBooleanLiteralContext(p, localctx)
 		p.EnterOuterAlt(localctx, 4)
 		{
-			p.SetState(153)
+			p.SetState(156)
 			_la = p.GetTokenStream().LA(1)
 
-			if !(_la == DCellParserT__38 || _la == DCellParserT__39) {
+			if !(_la == DCellParserT__40 || _la == DCellParserT__41) {
 				p.GetErrorHandler().RecoverInline(p)
 			} else {
 				p.GetErrorHandler().ReportMatch(p)
@@ -3427,12 +3514,12 @@ func (p *DCellParser) Literal() (localctx ILiteralContext) {
 			}
 		}
 
-	case DCellParserT__40:
+	case DCellParserT__42:
 		localctx = NewNullLiteralContext(p, localctx)
 		p.EnterOuterAlt(localctx, 5)
 		{
-			p.SetState(154)
-			p.Match(DCellParserT__40)
+			p.SetState(157)
+			p.Match(DCellParserT__42)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -3443,7 +3530,7 @@ func (p *DCellParser) Literal() (localctx ILiteralContext) {
 		localctx = NewListLiteralContext(p, localctx)
 		p.EnterOuterAlt(localctx, 6)
 		{
-			p.SetState(155)
+			p.SetState(158)
 			p.List()
 		}
 
@@ -3521,10 +3608,10 @@ func (p *DCellParser) Type_() (localctx ITypeContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(158)
+		p.SetState(161)
 		_la = p.GetTokenStream().LA(1)
 
-		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&65970697666560) != 0) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&263882790666240) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -3648,47 +3735,47 @@ func (p *DCellParser) List() (localctx IListContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(160)
+		p.SetState(163)
 		p.Match(DCellParserT__1)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
-	p.SetState(169)
+	p.SetState(172)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&71920704840269828) != 0 {
+	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&287682819361079300) != 0 {
 		{
-			p.SetState(161)
+			p.SetState(164)
 			p.Literal()
 		}
-		p.SetState(166)
+		p.SetState(169)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		for _la == DCellParserT__37 {
+		for _la == DCellParserT__39 {
 			{
-				p.SetState(162)
-				p.Match(DCellParserT__37)
+				p.SetState(165)
+				p.Match(DCellParserT__39)
 				if p.HasError() {
 					// Recognition error - abort rule
 					goto errorExit
 				}
 			}
 			{
-				p.SetState(163)
+				p.SetState(166)
 				p.Literal()
 			}
 
-			p.SetState(168)
+			p.SetState(171)
 			p.GetErrorHandler().Sync(p)
 			if p.HasError() {
 				goto errorExit
@@ -3698,7 +3785,7 @@ func (p *DCellParser) List() (localctx IListContext) {
 
 	}
 	{
-		p.SetState(171)
+		p.SetState(174)
 		p.Match(DCellParserT__2)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3842,7 +3929,7 @@ func (s *TripleQuoteStringContext) TRIPLE_QUOTE_STRING() antlr.TerminalNode {
 func (p *DCellParser) String_() (localctx IStringContext) {
 	localctx = NewStringContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 20, DCellParserRULE_string)
-	p.SetState(176)
+	p.SetState(179)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -3853,7 +3940,7 @@ func (p *DCellParser) String_() (localctx IStringContext) {
 		localctx = NewSingleQuoteStringContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(173)
+			p.SetState(176)
 			p.Match(DCellParserSINGLE_QUOTE_STRING)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -3865,7 +3952,7 @@ func (p *DCellParser) String_() (localctx IStringContext) {
 		localctx = NewDoubleQuoteStringContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(174)
+			p.SetState(177)
 			p.Match(DCellParserDOUBLE_QUOTE_STRING)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -3877,7 +3964,7 @@ func (p *DCellParser) String_() (localctx IStringContext) {
 		localctx = NewTripleQuoteStringContext(p, localctx)
 		p.EnterOuterAlt(localctx, 3)
 		{
-			p.SetState(175)
+			p.SetState(178)
 			p.Match(DCellParserTRIPLE_QUOTE_STRING)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -4048,7 +4135,7 @@ func (s *BinaryIntegerContext) BINARY_INTEGER() antlr.TerminalNode {
 func (p *DCellParser) Integer() (localctx IIntegerContext) {
 	localctx = NewIntegerContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 22, DCellParserRULE_integer)
-	p.SetState(182)
+	p.SetState(185)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -4059,7 +4146,7 @@ func (p *DCellParser) Integer() (localctx IIntegerContext) {
 		localctx = NewDecimalIntegerContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(178)
+			p.SetState(181)
 			p.Match(DCellParserDECIMAL_INTEGER)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -4071,7 +4158,7 @@ func (p *DCellParser) Integer() (localctx IIntegerContext) {
 		localctx = NewHexIntegerContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(179)
+			p.SetState(182)
 			p.Match(DCellParserHEX_INTEGER)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -4083,7 +4170,7 @@ func (p *DCellParser) Integer() (localctx IIntegerContext) {
 		localctx = NewOctalIntegerContext(p, localctx)
 		p.EnterOuterAlt(localctx, 3)
 		{
-			p.SetState(180)
+			p.SetState(183)
 			p.Match(DCellParserOCTAL_INTEGER)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -4095,7 +4182,7 @@ func (p *DCellParser) Integer() (localctx IIntegerContext) {
 		localctx = NewBinaryIntegerContext(p, localctx)
 		p.EnterOuterAlt(localctx, 4)
 		{
-			p.SetState(181)
+			p.SetState(184)
 			p.Match(DCellParserBINARY_INTEGER)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -4222,7 +4309,7 @@ func (s *ScientificFloatContext) SCIENTIFIC_FLOAT() antlr.TerminalNode {
 func (p *DCellParser) Float() (localctx IFloatContext) {
 	localctx = NewFloatContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 24, DCellParserRULE_float)
-	p.SetState(186)
+	p.SetState(189)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -4233,7 +4320,7 @@ func (p *DCellParser) Float() (localctx IFloatContext) {
 		localctx = NewScientificFloatContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(184)
+			p.SetState(187)
 			p.Match(DCellParserSCIENTIFIC_FLOAT)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -4245,7 +4332,7 @@ func (p *DCellParser) Float() (localctx IFloatContext) {
 		localctx = NewDecimalFloatContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(185)
+			p.SetState(188)
 			p.Match(DCellParserDECIMAL_FLOAT)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -4288,57 +4375,60 @@ func (p *DCellParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex i
 func (p *DCellParser) Expression_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 0:
-		return p.Precpred(p.GetParserRuleContext(), 19)
-
-	case 1:
-		return p.Precpred(p.GetParserRuleContext(), 14)
-
-	case 2:
-		return p.Precpred(p.GetParserRuleContext(), 13)
-
-	case 3:
-		return p.Precpred(p.GetParserRuleContext(), 12)
-
-	case 4:
-		return p.Precpred(p.GetParserRuleContext(), 11)
-
-	case 5:
-		return p.Precpred(p.GetParserRuleContext(), 10)
-
-	case 6:
-		return p.Precpred(p.GetParserRuleContext(), 9)
-
-	case 7:
-		return p.Precpred(p.GetParserRuleContext(), 8)
-
-	case 8:
-		return p.Precpred(p.GetParserRuleContext(), 7)
-
-	case 9:
-		return p.Precpred(p.GetParserRuleContext(), 6)
-
-	case 10:
-		return p.Precpred(p.GetParserRuleContext(), 5)
-
-	case 11:
-		return p.Precpred(p.GetParserRuleContext(), 4)
-
-	case 12:
-		return p.Precpred(p.GetParserRuleContext(), 3)
-
-	case 13:
-		return p.Precpred(p.GetParserRuleContext(), 2)
-
-	case 14:
-		return p.Precpred(p.GetParserRuleContext(), 22)
-
-	case 15:
-		return p.Precpred(p.GetParserRuleContext(), 21)
-
-	case 16:
 		return p.Precpred(p.GetParserRuleContext(), 20)
 
+	case 1:
+		return p.Precpred(p.GetParserRuleContext(), 15)
+
+	case 2:
+		return p.Precpred(p.GetParserRuleContext(), 14)
+
+	case 3:
+		return p.Precpred(p.GetParserRuleContext(), 13)
+
+	case 4:
+		return p.Precpred(p.GetParserRuleContext(), 12)
+
+	case 5:
+		return p.Precpred(p.GetParserRuleContext(), 11)
+
+	case 6:
+		return p.Precpred(p.GetParserRuleContext(), 10)
+
+	case 7:
+		return p.Precpred(p.GetParserRuleContext(), 9)
+
+	case 8:
+		return p.Precpred(p.GetParserRuleContext(), 8)
+
+	case 9:
+		return p.Precpred(p.GetParserRuleContext(), 7)
+
+	case 10:
+		return p.Precpred(p.GetParserRuleContext(), 6)
+
+	case 11:
+		return p.Precpred(p.GetParserRuleContext(), 5)
+
+	case 12:
+		return p.Precpred(p.GetParserRuleContext(), 4)
+
+	case 13:
+		return p.Precpred(p.GetParserRuleContext(), 3)
+
+	case 14:
+		return p.Precpred(p.GetParserRuleContext(), 2)
+
+	case 15:
+		return p.Precpred(p.GetParserRuleContext(), 23)
+
+	case 16:
+		return p.Precpred(p.GetParserRuleContext(), 22)
+
 	case 17:
+		return p.Precpred(p.GetParserRuleContext(), 21)
+
+	case 18:
 		return p.Precpred(p.GetParserRuleContext(), 1)
 
 	default:
