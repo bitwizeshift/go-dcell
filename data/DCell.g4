@@ -69,7 +69,7 @@ literal
   ;
 
 type
-  : ('int' | 'float' | 'string' | 'bool')
+  : ('int' | 'uint' | 'float' | 'string' | 'bool')
   ;
 
 list

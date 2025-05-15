@@ -37,13 +37,13 @@ func dcellParserInit() {
 		"'~'", "'+'", "'-'", "'**'", "'*'", "'/'", "'//'", "'%'", "'&&'", "'and'",
 		"'||'", "'or'", "'<->'", "'implies'", "'<<'", "'>>'", "'&'", "'^'",
 		"'|'", "'<='", "'<'", "'>'", "'>='", "'=='", "'!='", "'?'", "':'", "'?:'",
-		"'??'", "'as'", "','", "'true'", "'false'", "'null'", "'int'", "'float'",
-		"'string'", "'bool'",
+		"'??'", "'as'", "','", "'true'", "'false'", "'null'", "'int'", "'uint'",
+		"'float'", "'string'", "'bool'",
 	}
 	staticData.SymbolicNames = []string{
 		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
 		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "IDENTIFIER",
+		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "IDENTIFIER",
 		"DECIMAL_INTEGER", "HEX_INTEGER", "OCTAL_INTEGER", "BINARY_INTEGER",
 		"DECIMAL_FLOAT", "SCIENTIFIC_FLOAT", "SINGLE_QUOTE_STRING", "DOUBLE_QUOTE_STRING",
 		"TRIPLE_QUOTE_STRING", "WS", "COMMENT",
@@ -54,7 +54,7 @@ func dcellParserInit() {
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 59, 192, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 60, 192, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
 		10, 2, 11, 7, 11, 2, 12, 7, 12, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1,
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 42, 8, 1, 1, 1,
@@ -75,7 +75,7 @@ func dcellParserInit() {
 		2, 13, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 0, 12, 2, 0, 5, 5,
 		9, 9, 1, 0, 11, 12, 1, 0, 14, 17, 1, 0, 18, 19, 1, 0, 20, 21, 1, 0, 22,
 		23, 1, 0, 24, 25, 1, 0, 27, 28, 1, 0, 29, 32, 1, 0, 33, 34, 1, 0, 41, 42,
-		1, 0, 44, 47, 224, 0, 26, 1, 0, 0, 0, 2, 41, 1, 0, 0, 0, 4, 120, 1, 0,
+		1, 0, 44, 48, 224, 0, 26, 1, 0, 0, 0, 2, 41, 1, 0, 0, 0, 4, 120, 1, 0,
 		0, 0, 6, 131, 1, 0, 0, 0, 8, 133, 1, 0, 0, 0, 10, 141, 1, 0, 0, 0, 12,
 		151, 1, 0, 0, 0, 14, 159, 1, 0, 0, 0, 16, 161, 1, 0, 0, 0, 18, 163, 1,
 		0, 0, 0, 20, 179, 1, 0, 0, 0, 22, 185, 1, 0, 0, 0, 24, 189, 1, 0, 0, 0,
@@ -121,7 +121,7 @@ func dcellParserInit() {
 		1, 0, 0, 0, 131, 124, 1, 0, 0, 0, 132, 7, 1, 0, 0, 0, 133, 138, 3, 2, 1,
 		0, 134, 135, 5, 40, 0, 0, 135, 137, 3, 2, 1, 0, 136, 134, 1, 0, 0, 0, 137,
 		140, 1, 0, 0, 0, 138, 136, 1, 0, 0, 0, 138, 139, 1, 0, 0, 0, 139, 9, 1,
-		0, 0, 0, 140, 138, 1, 0, 0, 0, 141, 142, 5, 48, 0, 0, 142, 11, 1, 0, 0,
+		0, 0, 0, 140, 138, 1, 0, 0, 0, 141, 142, 5, 49, 0, 0, 142, 11, 1, 0, 0,
 		0, 143, 145, 3, 2, 1, 0, 144, 143, 1, 0, 0, 0, 144, 145, 1, 0, 0, 0, 145,
 		146, 1, 0, 0, 0, 146, 148, 5, 36, 0, 0, 147, 149, 3, 2, 1, 0, 148, 147,
 		1, 0, 0, 0, 148, 149, 1, 0, 0, 0, 149, 152, 1, 0, 0, 0, 150, 152, 3, 2,
@@ -135,12 +135,12 @@ func dcellParserInit() {
 		165, 1, 0, 0, 0, 168, 171, 1, 0, 0, 0, 169, 167, 1, 0, 0, 0, 169, 170,
 		1, 0, 0, 0, 170, 173, 1, 0, 0, 0, 171, 169, 1, 0, 0, 0, 172, 164, 1, 0,
 		0, 0, 172, 173, 1, 0, 0, 0, 173, 174, 1, 0, 0, 0, 174, 175, 5, 3, 0, 0,
-		175, 19, 1, 0, 0, 0, 176, 180, 5, 55, 0, 0, 177, 180, 5, 56, 0, 0, 178,
-		180, 5, 57, 0, 0, 179, 176, 1, 0, 0, 0, 179, 177, 1, 0, 0, 0, 179, 178,
-		1, 0, 0, 0, 180, 21, 1, 0, 0, 0, 181, 186, 5, 49, 0, 0, 182, 186, 5, 50,
-		0, 0, 183, 186, 5, 51, 0, 0, 184, 186, 5, 52, 0, 0, 185, 181, 1, 0, 0,
+		175, 19, 1, 0, 0, 0, 176, 180, 5, 56, 0, 0, 177, 180, 5, 57, 0, 0, 178,
+		180, 5, 58, 0, 0, 179, 176, 1, 0, 0, 0, 179, 177, 1, 0, 0, 0, 179, 178,
+		1, 0, 0, 0, 180, 21, 1, 0, 0, 0, 181, 186, 5, 50, 0, 0, 182, 186, 5, 51,
+		0, 0, 183, 186, 5, 52, 0, 0, 184, 186, 5, 53, 0, 0, 185, 181, 1, 0, 0,
 		0, 185, 182, 1, 0, 0, 0, 185, 183, 1, 0, 0, 0, 185, 184, 1, 0, 0, 0, 186,
-		23, 1, 0, 0, 0, 187, 190, 5, 54, 0, 0, 188, 190, 5, 53, 0, 0, 189, 187,
+		23, 1, 0, 0, 0, 187, 190, 5, 55, 0, 0, 188, 190, 5, 54, 0, 0, 189, 187,
 		1, 0, 0, 0, 189, 188, 1, 0, 0, 0, 190, 25, 1, 0, 0, 0, 18, 41, 47, 107,
 		113, 115, 120, 127, 131, 138, 144, 148, 151, 159, 169, 172, 179, 185, 189,
 	}
@@ -228,18 +228,19 @@ const (
 	DCellParserT__44               = 45
 	DCellParserT__45               = 46
 	DCellParserT__46               = 47
-	DCellParserIDENTIFIER          = 48
-	DCellParserDECIMAL_INTEGER     = 49
-	DCellParserHEX_INTEGER         = 50
-	DCellParserOCTAL_INTEGER       = 51
-	DCellParserBINARY_INTEGER      = 52
-	DCellParserDECIMAL_FLOAT       = 53
-	DCellParserSCIENTIFIC_FLOAT    = 54
-	DCellParserSINGLE_QUOTE_STRING = 55
-	DCellParserDOUBLE_QUOTE_STRING = 56
-	DCellParserTRIPLE_QUOTE_STRING = 57
-	DCellParserWS                  = 58
-	DCellParserCOMMENT             = 59
+	DCellParserT__47               = 48
+	DCellParserIDENTIFIER          = 49
+	DCellParserDECIMAL_INTEGER     = 50
+	DCellParserHEX_INTEGER         = 51
+	DCellParserOCTAL_INTEGER       = 52
+	DCellParserBINARY_INTEGER      = 53
+	DCellParserDECIMAL_FLOAT       = 54
+	DCellParserSCIENTIFIC_FLOAT    = 55
+	DCellParserSINGLE_QUOTE_STRING = 56
+	DCellParserDOUBLE_QUOTE_STRING = 57
+	DCellParserTRIPLE_QUOTE_STRING = 58
+	DCellParserWS                  = 59
+	DCellParserCOMMENT             = 60
 )
 
 // DCellParser rules.
@@ -2748,7 +2749,7 @@ func (p *DCellParser) Invocation() (localctx IInvocationContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&287964294337814180) != 0 {
+		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&575913195512815268) != 0 {
 			{
 				p.SetState(126)
 				p.ParameterList()
@@ -3182,7 +3183,7 @@ func (p *DCellParser) Index() (localctx IIndexContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&287964294337814180) != 0 {
+		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&575913195512815268) != 0 {
 			{
 				p.SetState(143)
 				p.expression(0)
@@ -3204,7 +3205,7 @@ func (p *DCellParser) Index() (localctx IIndexContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&287964294337814180) != 0 {
+		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&575913195512815268) != 0 {
 			{
 				p.SetState(147)
 				p.expression(0)
@@ -3611,7 +3612,7 @@ func (p *DCellParser) Type_() (localctx ITypeContext) {
 		p.SetState(161)
 		_la = p.GetTokenStream().LA(1)
 
-		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&263882790666240) != 0) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&545357767376896) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -3749,7 +3750,7 @@ func (p *DCellParser) List() (localctx IListContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&287682819361079300) != 0 {
+	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&575350245559369732) != 0 {
 		{
 			p.SetState(164)
 			p.Literal()
