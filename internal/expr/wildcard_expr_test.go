@@ -75,6 +75,7 @@ func TestWildcardExpr(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
 			sut := expr.Wildcard()
 			input := expr.NewContext(reflect.ValueOf(tc.input))
 			var expect reflect.Value
