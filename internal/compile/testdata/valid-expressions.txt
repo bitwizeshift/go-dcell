@@ -1,0 +1,121 @@
+# Primitive Literals
+5           # Decimal integer
+-5          # Negative decimal integer
+0xbadf00d   # Lowercase hexadecimal integer
+0XBADF00D   # Uppercase hexadecimal integer
+032         # Octal integer
+0b1010      # Binary integer
+15.0        # Decimal float
+15e10       # Scientific notation with 'e'
+15E10       # Scientific notation with 'E'
+15.0e10     # Scientific notation with decimal and 'e'
+15.0E10     # Scientific notation with decimal and 'E'
+"hello"     # double quote String literal
+'hello'     # single quote String literal
+"""hello""" # triple double quote String literal
+null        # Null literal
+true        # Boolean literal true
+false       # Boolean literal false
+
+# List literals
+[]                     # Empty list literal
+[1]                    # List containing integer
+["one"]                # List containing string
+[true]                 # List containing boolean
+[0.1]                  # List containing float
+[null]                 # List containing null
+[1, "two", 3.0, false] # Multi-entry list
+
+# Slice Access
+field[:]
+field[0:]
+field[:1]
+field[0:1]
+
+# Index Access
+field[0]
+field[-1]
+
+# Member access
+field.value
+field.*.other
+
+~100
+~field.value[0]
++field.value[0]
+-field.value[0]
+field.value[0] ** 2
+field.value[0] + 1
+field.value[0] * 1
+field.value[0] - 1
+field.value[0] / 1
+field.value[0] % 1
+field.value[0] // 1
+
+# Boolean Operators
+not field.something
+!field.something
+field.bool_1 and field.bool_2
+field.bool_1 && field.bool_2
+field.bool_1 or field.bool_2
+field.bool_1 || field.bool_2
+field.bool_1 implies field.bool_2
+field.bool_1 <-> field.bool_2
+
+# Bitwise Operators
+field.v0 & field.v1
+field.v0 | field.v1
+field.v0 ^ field.v1
+field.v0 << field.v1
+field.v0 >> field.v1
+
+# Equality and Comparison Operators
+field.v0 == field.v1
+field.v0 != field.v1
+field.v0 < field.v1
+field.v0 <= field.v1
+field.v0 > field.v1
+field.v0 >= field.v1
+
+# Conditional Operators
+field.condition ? field.true_condition : field.false_condition
+field.true_condition ?: field.false_condition
+field.maybe_true ?? field.next_maybe_true
+
+# Containment Operators
+field.v0 in [1, 2, 3]
+field.v0 not in [1, 2, 3]
+
+# Type Checks
+field.v0 is int
+field.v0 is float
+field.v0 is string
+field.v0 is bool
+field.v0 is not int
+field.v0 is not float
+field.v0 is not string
+field.v0 is not bool
+
+# Type Casting
+field.v0 as int
+field.v0 as float
+field.v0 as string
+field.v0 as bool
+
+(field.v0)
+not (field.v0)
+!(field.v0)
+
+# Uniform Function Calls
+func()
+func(1)
+func(1, "two")
+func(1, "two", field.three)
+1.func()
+1.func(2)
+1.func(2, "three")
+1.func(2, "three", field.four)
+field.func()
+field.func(1)
+field.func(1, "two")
+field.func(1, "two", field.three)
