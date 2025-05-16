@@ -123,15 +123,7 @@ func Int64s(rvs ...reflect.Value) ([]int64, error) {
 
 // Int64 converts the given [reflect.Value] into an int64 value.
 func Int64(rv reflect.Value) (int64, error) {
-	if !rv.IsValid() {
-		return 0, fmt.Errorf("invalid value")
-	}
-	rv = Deref(rv)
-	switch rv.Kind() {
-	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-		return rv.Int(), nil
-	}
-	return 0, fmt.Errorf("cannot convert %s to int", rv.Type().Name())
+	return convertInt(rv, intconv.Int64, intconv.Int64)
 }
 
 // Int32 converts the given [reflect.Value] into an int32 value.
@@ -161,15 +153,7 @@ func Uint64s(rvs ...reflect.Value) ([]uint64, error) {
 
 // Uint64 converts the given [reflect.Value] into a uint64 value.
 func Uint64(rv reflect.Value) (uint64, error) {
-	if !rv.IsValid() {
-		return 0, fmt.Errorf("invalid value")
-	}
-	rv = Deref(rv)
-	switch rv.Kind() {
-	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
-		return rv.Uint(), nil
-	}
-	return 0, fmt.Errorf("cannot convert %s to uint", rv.Type().Name())
+	return convertInt(rv, intconv.Uint64, intconv.Uint64)
 }
 
 // Uint32 converts the given [reflect.Value] into a uint32 value.
